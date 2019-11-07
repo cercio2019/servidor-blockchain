@@ -5,7 +5,8 @@ const cors = require('cors');
 const IndexRoutes = require('./routes/indexRoutes');
 const TransferRoutes = require('./routes/transferRoutes');
 const PagoRouter = require('./routes/pagoRouter');
-
+const EmpresasRoutes = require('./routes/empresasRoutes');
+const ServiciosRoutes = require('./routes/empresasRoutes');
 
 class servidor{
 
@@ -13,6 +14,8 @@ class servidor{
     indexRoutes = new IndexRoutes();
     transferRoutes = new TransferRoutes();
     pagoRouter = new PagoRouter();
+    empresasRoutes = new EmpresasRoutes();
+    serviciosRoutes = new ServiciosRoutes();
 
     constructor(){
         this.creandoServidor();
@@ -31,6 +34,8 @@ class servidor{
         this.app.use('/', this.indexRoutes.router);
         this.app.use('/transferencias', this.transferRoutes.router);
         this.app.use('/pagos', this.pagoRouter.router);
+        this.app.use('/empresas', this.empresasRoutes.router);
+        this.app.use('/servicios', this.serviciosRoutes.router);
     }
 
     activarServidor(){
